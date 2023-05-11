@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>My Website</title>
+    <script type="text/javascript" src="https://platform.linkedin.com/in.js">
+        api_key: '77vu7n7si7266f'
+        onLoad: onLinkedInLoad
+      </script>
+</head>
+<body>
+    <script>
+		// Your JavaScript code goes here
+		
+        function onLinkedInLoad() {
+        IN.User.authorize(handleAuth);
+        }
+
+        function handleAuth() {
+        IN.API.Profile("me")
+            .fields("id", "firstName", "lastName", "headline", "positions")
+            .result(displayProfileData)
+            .error(displayError);
+        }
+
+        function displayProfileData(profiles) {
+        var profile = profiles.values[0];
+        console.log(profile);
+        // Process and display the profile data as desired
+        }
+
+        function displayError(error) {
+            console.log(error);
+        // Handle and display any errors that occur
+        }
+	</script>
+	<h1>Welcome to my website</h1>
+	<p>This is a paragraph of text.</p>
+</body>
+</html>
